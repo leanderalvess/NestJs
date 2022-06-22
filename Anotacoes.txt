@@ -1,0 +1,62 @@
+Seção 1: Introdução ao NestJS e pré-requisitos
+    Introdução
+    Entidades do domínio
+    Componentes NestJS
+    Padrões, bibliotecas e produtos
+
+Seção 2: Dominio:
+    Um estudo do dominío, ou seja, das tabelas e suas "relações". Todas essas estão em .json
+
+Seção 3: Introdução ao Nest, com implementação da entidade Jogadores
+    npm i -g @nestjs/cli
+    nest new api-smartranking
+    npm run start:dev
+
+    NestJS Modules
+        • Uma aplicação Nest.js é organizada em modules. Se você já é familiarizado com modules do Angular, então a sintaxe utilizada pelo Nest vai lhe parecer muito familiar;
+        • Toda aplicação Nest tem pelo menos um module, que é o root module. É o “starting-point” da aplicação;
+        • Modules são uma maneira efetiva para organizamos componentes com features e capacidades relacionadas;
+        • É uma boa prática ter um diretório por module, contendo seus componentes;
+        • Modules são singletons, portanto um module pode ser importado por outros modules;
+        • Um module é definido quando anotamos uma classe com o decorator @Module(). Este decorator recupera um objeto que descreve o module, usando as seguintes propriedades:
+            o Providers: Array de providers que devem estar disponíveis dentro do module via injeção de dependência;
+            o Controllers: Os controllers que devem ser instanciados dentro do module;
+            o Exports: Providers que devem ser exportados para outros modules;
+            o Imports: Lista de modules necessários para uso no module corrente.
+
+    $ nest g module jogadores -> para o gerar um módulo novo
+
+    NestJS Controllers
+        • Responsáveis por lidar com as requisições recebidas e retornar responses para o cliente;
+        • Encaminham as requisições para um path específico. Exemplo: “/jogadores” para o resource jogadores;
+        • São definidos quando anotamos uma classe com o decorator @Controller;
+        • O decorator aceita uma string, que é o path a ser controlado pelo controller:
+        • Pussuem handlers, que lidam diretamente com métodos HTTP, tais como: GET, POST, DELETE, etc.:
+            o Handlers são métodos implementados dentro classe controller, que são anotados com os decorators @Get, @Post, @Delete, etc.
+        • Podem tirar vantagem da injeção de dependência para consumir providers presentes em um mesmo modulo
+        • São definidos quando anotamos uma classe com decorator @Controller
+        • O decorator aceita uma string, que é o path a ser controlado pelo controller
+
+    $ nest g controller jogadores
+
+    NestJS Providers e Services
+        Providers
+            • São utilizados para criar services, factories, helpers, etc.;
+            • O decorator @Injectable() é utilizado para criar uma classe provider;
+            • Podem ser injetados dentro de controllers e outros providers, usando a injeção de dependência embarcada no Nest;
+            • Podem ser exportados por um module, se tornando disponíveis para um outro module importa-los.
+        Services
+            • São definidos como providers, porém, nem todos providers são services;
+            • Tratam-se de um conceito comum no contexto de desenvolvimento de software e não são exclusivos do NestJS, JavaScript ou qualquer tecnologia de desenvolvimento backend;
+            • São singletons, quando decorados com @Injectable(), e fornecidos a um module. Ou seja, uma mesma instância será compartilhada em toda a aplicação;
+            • É onde nossa lógica de negócios deverá ser implementada.
+
+
+
+
+Seção 4: Persistência de dados com MongoDB e Mongoose
+Seção 5: Entidade Jogadores - validação de dados e tratamento de excessões
+Seção 6: implementação de demais entidades (categorias, desafios e partidas), c/ exceptionfield
+Seção 7: Microservices; entidade (rankings); NestInterceptior, ClientProxy, Teranporters, Event Pattern, RpcException, ScheduleModule; AmazonSES, bitnami, RabbitMQ, Rxjs, Pub/Sub, Lodash, Microservices
+Seção 8: Autenticação com Amazon Cognito; Guards; Passport e Amazon Cognito
+Seção 9: Publicando API com infra escalável; Pivotal WebServices
